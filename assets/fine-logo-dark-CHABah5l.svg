@@ -1,0 +1,79 @@
+<svg version="1.0" id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="606 -406.5 1665 1265" xml:space="preserve">
+  <defs>
+    <path id="SVGID_1_" d="M606-1141.5h2000v2000H606z"/>
+  </defs>
+  <clipPath id="SVGID_2_">
+    <use xlink:href="#SVGID_1_" overflow="visible"/>
+  </clipPath>
+  <g clip-path="url(#SVGID_2_)">
+    <defs>
+      <path id="SVGID_3_" d="M445.6-932h2000v2000h-2000z"/>
+    </defs>
+    <defs>
+      <path id="SVGID_4_" d="M445.6-932h2000v2000h-2000z"/>
+    </defs>
+    <defs>
+      <path id="SVGID_5_" d="M445.6-932h2000v2000h-2000z"/>
+    </defs>
+    <defs>
+      <path id="SVGID_6_" d="M445.6-932h2000v2000h-2000z"/>
+    </defs>
+    <clipPath id="SVGID_7_">
+      <use xlink:href="#SVGID_3_" overflow="visible"/>
+    </clipPath>
+    <clipPath id="SVGID_8_" clip-path="url(#SVGID_7_)">
+      <use xlink:href="#SVGID_4_" overflow="visible"/>
+    </clipPath>
+    <clipPath id="SVGID_9_" clip-path="url(#SVGID_8_)">
+      <use xlink:href="#SVGID_5_" overflow="visible"/>
+    </clipPath>
+    <clipPath id="SVGID_10_" clip-path="url(#SVGID_9_)">
+      <use xlink:href="#SVGID_6_" overflow="visible"/>
+    </clipPath>
+    <path id="path16" d="M1292.7 846.9l-2-445.5c88.2-27.3 166.3-40.9 234.4-40.9 73.3 0 126.4 12.3 159.5 37 33.1 24.6 49.6 62.6 49.6 113.8 0 29.2-.5 90.1-1.4 182.8-1 92.7-1.4 143.6-1.4 152.7h-146.9l1-286.9c0-47.3-23-71-69.1-71-10.4 0-36 3.9-76.8 11.7l-1 346.3" fill="#ffffff"/>
+    <path id="path18" d="M1961 566.8c72.6 0 121.4-3.7 146.4-11.2 24.9-7.4 37.5-20.6 37.5-39.4 0-32.4-26.6-48.6-79.8-48.6-61.7 0-96.3 33.1-104.1 99.2m309.2-40.8c0 31.8-7.5 56.7-22.4 74.9-14.9 18.2-45.2 32.8-90.9 43.8s-110.4 16.5-194.1 16.5c5.9 30.5 17.3 51.9 34.5 64.2 17.2 12.3 42 18.5 74.4 18.5 43.4.7 90.8-7.1 142-23.3l27.2 98.3c-63.6 25.3-122.9 37.9-178 37.9-76.5 0-135.7-21.6-177.5-64.7s-62.8-100.7-62.8-172.6c0-33.7 4.1-65.2 12.2-94.4 8.1-29.2 21.1-56.2 38.9-81.2s42.6-44.6 74.4-58.8c31.8-14.3 69.4-21.4 112.9-21.4 68.7 0 120.7 14.9 156.1 44.7 35.5 29.7 53.1 68.9 53.1 117.6" fill="#ffffff"/>
+    <path id="path20" d="M1368.4 259.1L1203 276.3c-30.6 3.2-60.1-11.9-75.5-38.5l-130.7-226c-25.4-44-2.7-100.1 46.2-114l161.6-45.9c35.4-10.1 73 6 90.2 38.6l134.5 254.7c25.7 48.8-6 108.2-60.9 113.9" clip-path="url(#SVGID_10_)" fill="#007f33"/>
+    <g>
+      <defs>
+        <path id="SVGID_11_" d="M1009.1-400H1436v240.6h-426.9z"/>
+      </defs>
+      <clipPath id="SVGID_12_">
+        <use xlink:href="#SVGID_11_" overflow="visible"/>
+      </clipPath>
+      <path id="path28" d="M1255.7-223.7l-223.6 63.5c-19.1 5.4-31.6-19.6-15.8-31.6l172-131.2c1.6-1.2 3.3-2.1 5.2-2.8l218.7-73.2c18.8-6.3 32.5 18 17.3 30.8l-167.1 141c-1.9 1.6-4.2 2.8-6.7 3.5" clip-path="url(#SVGID_12_)" fill="#006bb0"/>
+    </g>
+    <g>
+      <defs>
+        <path id="SVGID_13_" d="M445.6-932h2000v2000h-2000z"/>
+      </defs>
+      <clipPath id="SVGID_14_">
+        <use xlink:href="#SVGID_13_" overflow="visible"/>
+      </clipPath>
+      <g>
+        <defs>
+          <path id="SVGID_15_" d="M1324.8-368.3h396.5v538.5h-396.5z"/>
+        </defs>
+        <clipPath id="SVGID_16_">
+          <use xlink:href="#SVGID_15_" overflow="visible"/>
+        </clipPath>
+        <path id="path40" d="M1583.7-336.3l132 273.8c9.6 20 6.7 43.7-7.5 60.7l-126.3 151.6c-25.7 30.9-74.6 25.8-93.4-9.8l-157.2-297.5c-12.4-23.5-6.8-52.5 13.5-69.6l151.5-127.8c28.2-23.8 71.3-14.6 87.4 18.6" clip-path="url(#SVGID_16_)" fill="#cb8f08"/>
+      </g>
+      <g>
+        <defs>
+          <path id="SVGID_17_" d="M445.6-932h2000v2000h-2000z"/>
+        </defs>
+        <defs>
+          <path id="SVGID_18_" d="M445.6-932h2000v2000h-2000z"/>
+        </defs>
+        <clipPath id="SVGID_19_">
+          <use xlink:href="#SVGID_17_" overflow="visible"/>
+        </clipPath>
+        <clipPath id="SVGID_20_" clip-path="url(#SVGID_19_)">
+          <use xlink:href="#SVGID_18_" overflow="visible"/>
+        </clipPath>
+        <path id="path46" d="M827.5 380.1h98.1v113.8h-97.1V847h-144V493.9h-74.9V380.1h74c-1.3-24.6-2-44.1-2-58.4 0-62.3 16.9-108.8 50.6-139.6 33.7-30.8 79.4-46.2 137.1-46.2 35.6 0 48.4 6.2 75.6 18.5l48.5 112.8c-15.5-5.9-82.3-8.8-97.9-8.8-22 0-39.1 6.3-51 19-12 12.7-18 30.6-18 54 0 20.8.4 36.9 1 48.7" fill="#ffffff"/>
+        <path id="polyline48" d="M1181 380.1l-2.9 466.8h-144.9l-2-466.8" fill="#ffffff"/>
+      </g>
+    </g>
+  </g>
+</svg>

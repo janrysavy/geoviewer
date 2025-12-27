@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fine Geo Viewer</title>
+    <link rel="icon" href="./favicon.ico" />
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        background: #f5f1ea;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #151515;
+        }
+      }
+      body[data-mode="solids"] .solids-hidden {
+        display: none;
+      }
+      #visibility-section {
+        opacity: 0;
+        pointer-events: none;
+      }
+      body.ready #visibility-section {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      #app,
+      #panel,
+      #section-detail,
+      #hud,
+      #message {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .corner-logo .logo-light {
+        display: none;
+      }
+      .corner-logo .logo-dark {
+        display: none;
+      }
+      :root[data-theme="light"] .corner-logo .logo-light {
+        display: block;
+      }
+      :root[data-theme="dark"] .corner-logo .logo-dark {
+        display: block;
+      }
+      @media (prefers-color-scheme: light) {
+        .corner-logo .logo-light {
+          display: block;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        .corner-logo .logo-dark {
+          display: block;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-DCR0j_Jd.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B_S24B9M.css">
+  </head>
+  <body data-mode="solids">
+    <div id="app">
+      <canvas id="gfx"></canvas>
+      <div id="panel">
+        <div class="panel-header">
+          <button
+            id="panel-toggle"
+            class="panel-title panel-title--toggle"
+            type="button"
+            aria-expanded="true"
+          >
+            GEO VIEWER
+            <span class="panel-title-caret" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div id="panel-body">
+          <div class="panel-section panel-section--divider" id="mode-section">
+            <div class="panel-label">Mode</div>
+            <div class="mode-toggle mode-toggle--inline" role="radiogroup" aria-label="Mode">
+              <label class="panel-option">
+                <input type="radio" name="mode" value="solids" checked />
+                Solids
+              </label>
+              <label class="panel-option">
+                <input type="radio" name="mode" value="sections" />
+                Sections
+              </label>
+            </div>
+          </div>
+          <div class="panel-section panel-section--divider" id="visibility-section">
+            <div class="panel-label">Visibility</div>
+            <label class="panel-option solids-hidden" id="terrain-option">
+              <input type="checkbox" id="toggle-terrain" checked />
+              Terrain
+            </label>
+            <label class="panel-option solids-hidden" id="grid-option">
+              <input type="checkbox" id="toggle-grid" checked />
+              Terrain grid
+            </label>
+            <div id="sections-controls" class="solids-hidden">
+              <label class="panel-option">
+                <input type="checkbox" id="toggle-sections" checked />
+                Sections
+              </label>
+              <div id="section-list" class="panel-list"></div>
+            </div>
+            <div id="profiles-controls" class="solids-hidden">
+              <label class="panel-option">
+                <input type="checkbox" id="toggle-profiles" checked />
+                Profiles
+              </label>
+              <div id="profile-list" class="panel-list"></div>
+            </div>
+            <div id="solids-controls">
+              <label class="panel-option panel-option--hidden">
+                <input type="checkbox" id="toggle-solids" checked />
+                Solids
+              </label>
+              <div id="solid-list" class="panel-list">
+                <label class="panel-option">
+                  <input type="checkbox" data-soil-id="landfill" checked />
+                  Landfill
+                </label>
+                <label class="panel-option">
+                  <input type="checkbox" data-soil-id="silt" checked />
+                  Silt
+                </label>
+                <label class="panel-option">
+                  <input type="checkbox" data-soil-id="clay" checked />
+                  Clay
+                </label>
+              </div>
+              <div class="panel-subsection panel-subsection--divider" id="render-section">
+                <div class="panel-label panel-label--sub">Render</div>
+                <div
+                  class="mode-toggle mode-toggle--inline"
+                  role="radiogroup"
+                  aria-label="Solids render mode"
+                >
+                <label class="panel-option">
+                  <input type="radio" name="solids-visibility" value="classic" checked />
+                  Fine
+                </label>
+                <label class="panel-option">
+                  <input type="radio" name="solids-visibility" value="wireframe" />
+                  Mesh
+                </label>
+                <label class="panel-option">
+                  <input type="radio" name="solids-visibility" value="transparent" />
+                  Glass
+                </label>
+                </div>
+                <label class="panel-option panel-option--spaced panel-option--edges">
+                  <input type="checkbox" id="toggle-solids-edges" checked />
+                  Edges
+                </label>
+              </div>
+              <div class="panel-range panel-range--divider" id="spacing-section">
+                <div class="panel-range-header">
+                  <div class="panel-range-label">Vertical spacing</div>
+                  <span id="solids-spacing-value" class="panel-range-value">0.00 m</span>
+                </div>
+                <div class="panel-range-row">
+                  <input
+                    type="range"
+                    id="solids-spacing"
+                    min="0"
+                    max="5"
+                    step="0.05"
+                    value="0"
+                  />
+                </div>
+              </div>
+              <div class="panel-range">
+                <div class="panel-range-header">
+                  <div class="panel-range-label">Crop X</div>
+                  <span id="solids-clip-x-value" class="panel-range-value">0.00 m</span>
+                </div>
+                <div class="panel-range-row">
+                  <input type="range" id="solids-clip-x" min="0" max="1" step="0.01" value="0" />
+                </div>
+              </div>
+              <div class="panel-range">
+                <div class="panel-range-header">
+                  <div class="panel-range-label">Crop Y</div>
+                  <span id="solids-clip-y-value" class="panel-range-value">0.00 m</span>
+                </div>
+                <div class="panel-range-row">
+                  <input type="range" id="solids-clip-y" min="0" max="1" step="0.01" value="1" />
+                </div>
+              </div>
+              <div class="panel-range">
+                <div class="panel-range-header">
+                  <div class="panel-range-label">Crop Z</div>
+                  <span id="solids-clip-z-value" class="panel-range-value">0.00 m</span>
+                </div>
+                <div class="panel-range-row">
+                  <input type="range" id="solids-clip-z" min="0" max="1" step="0.01" value="1" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-section" id="view-section">
+            <div class="panel-section-header">
+              <div class="panel-label">View</div>
+              <div class="theme-toggle" role="radiogroup" aria-label="Theme">
+                <label class="panel-option">
+                  <input type="radio" name="theme" value="light" />
+                  Light
+                </label>
+                <label class="panel-option">
+                  <input type="radio" name="theme" value="dark" checked />
+                  Dark
+                </label>
+              </div>
+            </div>
+            <div class="panel-actions">
+              <button id="fit-view" type="button">Fit to view</button>
+              <button id="toggle-projection" type="button">Perspective</button>
+            </div>
+            <div class="panel-views">
+              <button type="button" data-view="front">Front</button>
+              <button type="button" data-view="back">Back</button>
+              <button type="button" data-view="left">Left</button>
+              <button type="button" data-view="right">Right</button>
+              <button type="button" data-view="top">Top</button>
+              <button type="button" data-view="bottom">Bottom</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="section-detail" class="detail-panel">
+        <div class="detail-header">
+          <div id="section-title">Section Detail</div>
+          <button id="section-close" type="button">Close</button>
+        </div>
+        <canvas id="section-canvas"></canvas>
+      </div>
+      <div id="message" role="status"></div>
+      <div class="corner-logo" aria-hidden="true">
+        <img class="logo-light" src="data:image/svg+xml,%3csvg%20version='1.0'%20id='Vrstva_1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20x='0'%20y='0'%20viewBox='606%20-406.5%201665%201265'%20xml:space='preserve'%3e%3cdefs%3e%3cpath%20id='SVGID_1_'%20d='M606-1141.5h2000v2000H606z'/%3e%3c/defs%3e%3cclipPath%20id='SVGID_2_'%3e%3cuse%20xlink:href='%23SVGID_1_'%20overflow='visible'/%3e%3c/clipPath%3e%3cg%20clip-path='url(%23SVGID_2_)'%3e%3cdefs%3e%3cpath%20id='SVGID_3_'%20d='M445.6-932h2000v2000h-2000z'/%3e%3c/defs%3e%3cdefs%3e%3cpath%20id='SVGID_4_'%20d='M445.6-932h2000v2000h-2000z'/%3e%3c/defs%3e%3cdefs%3e%3cpath%20id='SVGID_5_'%20d='M445.6-932h2000v2000h-2000z'/%3e%3c/defs%3e%3cdefs%3e%3cpath%20id='SVGID_6_'%20d='M445.6-932h2000v2000h-2000z'/%3e%3c/defs%3e%3cclipPath%20id='SVGID_7_'%3e%3cuse%20xlink:href='%23SVGID_3_'%20overflow='visible'/%3e%3c/clipPath%3e%3cclipPath%20id='SVGID_8_'%20clip-path='url(%23SVGID_7_)'%3e%3cuse%20xlink:href='%23SVGID_4_'%20overflow='visible'/%3e%3c/clipPath%3e%3cclipPath%20id='SVGID_9_'%20clip-path='url(%23SVGID_8_)'%3e%3cuse%20xlink:href='%23SVGID_5_'%20overflow='visible'/%3e%3c/clipPath%3e%3cclipPath%20id='SVGID_10_'%20clip-path='url(%23SVGID_9_)'%3e%3cuse%20xlink:href='%23SVGID_6_'%20overflow='visible'/%3e%3c/clipPath%3e%3cpath%20id='path16'%20class='st4'%20d='M1292.7%20846.9l-2-445.5c88.2-27.3%20166.3-40.9%20234.4-40.9%2073.3%200%20126.4%2012.3%20159.5%2037%2033.1%2024.6%2049.6%2062.6%2049.6%20113.8%200%2029.2-.5%2090.1-1.4%20182.8-1%2092.7-1.4%20143.6-1.4%20152.7h-146.9l1-286.9c0-47.3-23-71-69.1-71-10.4%200-36%203.9-76.8%2011.7l-1%20346.3'/%3e%3cpath%20id='path18'%20class='st4'%20d='M1961%20566.8c72.6%200%20121.4-3.7%20146.4-11.2%2024.9-7.4%2037.5-20.6%2037.5-39.4%200-32.4-26.6-48.6-79.8-48.6-61.7%200-96.3%2033.1-104.1%2099.2m309.2-40.8c0%2031.8-7.5%2056.7-22.4%2074.9-14.9%2018.2-45.2%2032.8-90.9%2043.8s-110.4%2016.5-194.1%2016.5c5.9%2030.5%2017.3%2051.9%2034.5%2064.2%2017.2%2012.3%2042%2018.5%2074.4%2018.5%2043.4.7%2090.8-7.1%20142-23.3l27.2%2098.3c-63.6%2025.3-122.9%2037.9-178%2037.9-76.5%200-135.7-21.6-177.5-64.7s-62.8-100.7-62.8-172.6c0-33.7%204.1-65.2%2012.2-94.4%208.1-29.2%2021.1-56.2%2038.9-81.2s42.6-44.6%2074.4-58.8c31.8-14.3%2069.4-21.4%20112.9-21.4%2068.7%200%20120.7%2014.9%20156.1%2044.7%2035.5%2029.7%2053.1%2068.9%2053.1%20117.6'/%3e%3cpath%20id='path20'%20d='M1368.4%20259.1L1203%20276.3c-30.6%203.2-60.1-11.9-75.5-38.5l-130.7-226c-25.4-44-2.7-100.1%2046.2-114l161.6-45.9c35.4-10.1%2073%206%2090.2%2038.6l134.5%20254.7c25.7%2048.8-6%20108.2-60.9%20113.9'%20clip-path='url(%23SVGID_10_)'%20fill='%23007f33'/%3e%3cg%20id='g30'%20class='st6'%3e%3cdefs%3e%3cpath%20id='SVGID_11_'%20d='M1009.1-400H1436v240.6h-426.9z'/%3e%3c/defs%3e%3cclipPath%20id='SVGID_12_'%3e%3cuse%20xlink:href='%23SVGID_11_'%20overflow='visible'/%3e%3c/clipPath%3e%3cpath%20id='path28'%20d='M1255.7-223.7l-223.6%2063.5c-19.1%205.4-31.6-19.6-15.8-31.6l172-131.2c1.6-1.2%203.3-2.1%205.2-2.8l218.7-73.2c18.8-6.3%2032.5%2018%2017.3%2030.8l-167.1%20141c-1.9%201.6-4.2%202.8-6.7%203.5'%20clip-path='url(%23SVGID_12_)'%20fill='%23006bb0'/%3e%3c/g%3e%3cg%20class='st6'%3e%3cdefs%3e%3cpath%20id='SVGID_13_'%20d='M445.6-932h2000v2000h-2000z'/%3e%3c/defs%3e%3cclipPath%20id='SVGID_14_'%3e%3cuse%20xlink:href='%23SVGID_13_'%20overflow='visible'/%3e%3c/clipPath%3e%3cg%20id='g42'%20class='st8'%3e%3cdefs%3e%3cpath%20id='SVGID_15_'%20d='M1324.8-368.3h396.5v538.5h-396.5z'/%3e%3c/defs%3e%3cclipPath%20id='SVGID_16_'%3e%3cuse%20xlink:href='%23SVGID_15_'%20overflow='visible'/%3e%3c/clipPath%3e%3cpath%20id='path40'%20d='M1583.7-336.3l132%20273.8c9.6%2020%206.7%2043.7-7.5%2060.7l-126.3%20151.6c-25.7%2030.9-74.6%2025.8-93.4-9.8l-157.2-297.5c-12.4-23.5-6.8-52.5%2013.5-69.6l151.5-127.8c28.2-23.8%2071.3-14.6%2087.4%2018.6'%20clip-path='url(%23SVGID_16_)'%20fill='%23cb8f08'/%3e%3c/g%3e%3cg%20id='g50'%20class='st8'%3e%3cdefs%3e%3cpath%20id='SVGID_17_'%20d='M445.6-932h2000v2000h-2000z'/%3e%3c/defs%3e%3cdefs%3e%3cpath%20id='SVGID_18_'%20d='M445.6-932h2000v2000h-2000z'/%3e%3c/defs%3e%3cclipPath%20id='SVGID_19_'%3e%3cuse%20xlink:href='%23SVGID_17_'%20overflow='visible'/%3e%3c/clipPath%3e%3cclipPath%20id='SVGID_20_'%20clip-path='url(%23SVGID_19_)'%3e%3cuse%20xlink:href='%23SVGID_18_'%20overflow='visible'/%3e%3c/clipPath%3e%3cpath%20id='path46'%20class='st11'%20d='M827.5%20380.1h98.1v113.8h-97.1V847h-144V493.9h-74.9V380.1h74c-1.3-24.6-2-44.1-2-58.4%200-62.3%2016.9-108.8%2050.6-139.6%2033.7-30.8%2079.4-46.2%20137.1-46.2%2035.6%200%2048.4%206.2%2075.6%2018.5l48.5%20112.8c-15.5-5.9-82.3-8.8-97.9-8.8-22%200-39.1%206.3-51%2019-12%2012.7-18%2030.6-18%2054%200%2020.8.4%2036.9%201%2048.7'/%3e%3cpath%20id='polyline48'%20class='st11'%20d='M1181%20380.1l-2.9%20466.8h-144.9l-2-466.8'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="" />
+        <img class="logo-dark" src="./assets/fine-logo-dark-CHABah5l.svg" alt="" />
+        <div class="corner-logo-text">
+          <span>TECHNOLOGY</span>
+          <span>PREVIEW</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
