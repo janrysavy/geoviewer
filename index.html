@@ -59,7 +59,7 @@
         }
       }
     </style>
-    <script type="module" crossorigin src="./assets/index-_v34lTGK.js"></script>
+    <script type="module" crossorigin src="./assets/index-cOjV6B2-.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-H2d4fJN2.css">
   </head>
   <body data-mode="solids">
@@ -107,6 +107,27 @@
                 Sections
               </label>
               <div id="section-list" class="panel-list"></div>
+              <div class="panel-subsection panel-subsection--divider" id="sections-render-section">
+                <div class="panel-label panel-label--sub">Render</div>
+                <div
+                  class="mode-toggle mode-toggle--inline"
+                  role="radiogroup"
+                  aria-label="Sections render mode"
+                >
+                  <label class="panel-option">
+                    <input type="radio" name="sections-visibility" value="classic" checked />
+                    Fine
+                  </label>
+                  <label class="panel-option">
+                    <input type="radio" name="sections-visibility" value="transparent" />
+                    Glass
+                  </label>
+                  <label class="panel-option">
+                    <input type="radio" name="sections-visibility" value="wireframe" />
+                    Mesh
+                  </label>
+                </div>
+              </div>
             </div>
             <div id="profiles-controls" class="solids-hidden">
               <label class="panel-option">
@@ -141,23 +162,29 @@
                   role="radiogroup"
                   aria-label="Solids render mode"
                 >
-	                <label class="panel-option">
-	                  <input type="radio" name="solids-visibility" value="classic" checked />
-	                  Fine
-	                </label>
-	                <label class="panel-option">
-	                  <input type="radio" name="solids-visibility" value="transparent" />
-	                  Glass
-	                </label>
-	                <label class="panel-option">
-	                  <input type="radio" name="solids-visibility" value="wireframe" />
-	                  Mesh
-	                </label>
-	                </div>
-	                <label class="panel-option panel-option--spaced panel-option--edges">
-	                  <input type="checkbox" id="toggle-solids-edges" checked />
-	                  Edges
-                </label>
+                  <label class="panel-option">
+                    <input type="radio" name="solids-visibility" value="classic" checked />
+                    Fine
+                  </label>
+                  <label class="panel-option">
+                    <input type="radio" name="solids-visibility" value="transparent" />
+                    Glass
+                  </label>
+                  <label class="panel-option">
+                    <input type="radio" name="solids-visibility" value="wireframe" />
+                    Mesh
+                  </label>
+                </div>
+                <div class="mode-toggle mode-toggle--inline panel-option--edges">
+                  <label class="panel-option">
+                    <input type="checkbox" id="toggle-solids-edges" checked />
+                    Edges
+                  </label>
+                  <label class="panel-option">
+                    <input type="checkbox" id="toggle-solids-labels" checked />
+                    Labels
+                  </label>
+                </div>
               </div>
               <div class="panel-range panel-range--divider" id="spacing-section">
                 <div class="panel-range-header">
