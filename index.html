@@ -9,8 +9,15 @@
       :root {
         color-scheme: light dark;
       }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
       body {
         background: #f5f1ea;
+        overflow: hidden;
       }
       @media (prefers-color-scheme: dark) {
         body {
@@ -30,7 +37,6 @@
       }
       #app,
       #panel,
-      #section-detail,
       #hud,
       #message {
         opacity: 0;
@@ -59,8 +65,8 @@
         }
       }
     </style>
-    <script type="module" crossorigin src="./assets/index-cOjV6B2-.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-H2d4fJN2.css">
+    <script type="module" crossorigin src="./assets/index-BhTpSb7B.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DACjJLxP.css">
   </head>
   <body data-mode="solids">
     <div id="app">
@@ -125,6 +131,12 @@
                   <label class="panel-option">
                     <input type="radio" name="sections-visibility" value="wireframe" />
                     Mesh
+                  </label>
+                </div>
+                <div class="mode-toggle mode-toggle--inline panel-option--edges">
+                  <label class="panel-option">
+                    <input type="checkbox" id="toggle-sections-edges" checked />
+                    Edges
                   </label>
                 </div>
               </div>
@@ -231,6 +243,152 @@
               </div>
             </div>
           </div>
+          <div class="panel-section panel-section--divider" id="gtao-section">
+            <div class="panel-label">GTAO</div>
+            <label class="panel-option">
+              <input type="checkbox" id="toggle-gtao" checked />
+              Enabled
+            </label>
+            <label class="panel-option">
+              <input type="checkbox" id="toggle-gtao-only" checked />
+              GTAO only
+            </label>
+            <label class="panel-option">
+              <input type="checkbox" id="toggle-gtao-multiscale" checked />
+              Multi-scale (cavity + ambient)
+            </label>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Ambient weight</div>
+                <span id="gtao-ambient-weight-value" class="panel-range-value">0.35</span>
+              </div>
+              <div class="panel-range-row">
+                <input
+                  type="range"
+                  id="gtao-ambient-weight"
+                  min="0"
+                  max="1"
+                  step="0.05"
+                  value="0.35"
+                />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Ambient radius ×</div>
+                <span id="gtao-ambient-radius-scale-value" class="panel-range-value">5.75x</span>
+              </div>
+              <div class="panel-range-row">
+                <input
+                  type="range"
+                  id="gtao-ambient-radius-scale"
+                  min="1"
+                  max="6"
+                  step="0.25"
+                  value="5.75"
+                />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Strength</div>
+                <span id="gtao-strength-value" class="panel-range-value">3.60</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-strength" min="0" max="4" step="0.05" value="3.6" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Radius</div>
+                <span id="gtao-radius-value" class="panel-range-value">1.35 m</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-radius" min="0.05" max="3" step="0.05" value="1.35" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Bias</div>
+                <span id="gtao-bias-value" class="panel-range-value">0.03</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-bias" min="0" max="0.2" step="0.005" value="0.03" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Power</div>
+                <span id="gtao-power-value" class="panel-range-value">1.50</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-power" min="0.5" max="3" step="0.05" value="1.5" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Thickness</div>
+                <span id="gtao-thickness-value" class="panel-range-value">1.00 m</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-thickness" min="0.1" max="4" step="0.1" value="1" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Corner boost</div>
+                <span id="gtao-corner-value" class="panel-range-value">0.00</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-corner" min="0" max="1" step="0.05" value="0" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Edge preserve</div>
+                <span id="gtao-edge-value" class="panel-range-value">1.00</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-edge" min="0" max="1" step="0.05" value="1" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Samples</div>
+                <span id="gtao-samples-value" class="panel-range-value">12</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-samples" min="4" max="24" step="1" value="12" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Blur radius</div>
+                <span id="gtao-blur-value" class="panel-range-value">1.40</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-blur" min="0.4" max="2.5" step="0.1" value="1.4" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Blur depth</div>
+                <span id="gtao-blur-depth-value" class="panel-range-value">0.07</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-blur-depth" min="0.01" max="0.2" step="0.005" value="0.07" />
+              </div>
+            </div>
+            <div class="panel-range">
+              <div class="panel-range-header">
+                <div class="panel-range-label">Resolution</div>
+                <span id="gtao-scale-value" class="panel-range-value">1.00x</span>
+              </div>
+              <div class="panel-range-row">
+                <input type="range" id="gtao-scale" min="0.4" max="1" step="0.1" value="1" />
+              </div>
+            </div>
+          </div>
           <div class="panel-section" id="view-section">
             <div class="panel-section-header">
               <div class="panel-label">View</div>
@@ -259,13 +417,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div id="section-detail" class="detail-panel">
-        <div class="detail-header">
-          <div id="section-title">Section Detail</div>
-          <button id="section-close" type="button">Close</button>
-        </div>
-        <canvas id="section-canvas"></canvas>
       </div>
       <div id="message" role="status"></div>
       <div class="corner-logo" aria-hidden="true">

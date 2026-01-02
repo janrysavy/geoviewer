@@ -1,0 +1,66 @@
+{
+  "soils": [
+    {
+      "id": "landfill",
+      "name": "Landfill",
+      "color": [1, 0, 0],
+      "patternId": 1
+    },
+    {
+      "id": "silt",
+      "name": "Silt",
+      "color": [0.752941, 0.376471, 0],
+      "patternId": 2
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "color": [0, 0.501961, 0.752941],
+      "patternId": 3
+    }
+  ],
+  "objects": [
+    {
+      "id": "terrain",
+      "type": "terrain",
+      "mesh": { "primitive": "plane", "size": [20, 0.02, 10] },
+      "color": [0.6591376, 0.88, 0.213961],
+      "gridScale": 1,
+      "position": [10, 0, 5]
+    }
+  ],
+  "sections": [
+    {
+      "id": "s1",
+      "name": "Geological Section No. 1",
+      "path": [
+        [0.01, 4.25],
+        [19.99, 2.13]
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "Section 2",
+      "path": [
+        [2.11, 9.68],
+        [1.91, 0.43]
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "Section 3",
+      "path": [
+        [15.29, 0.45],
+        [15.63, 9.53]
+      ]
+    },
+    {
+      "id": "s4",
+      "name": "Section 4",
+      "path": [
+        [0.2, 9.81],
+        [19.72, 9.72]
+      ]
+    }
+  ]
+}
